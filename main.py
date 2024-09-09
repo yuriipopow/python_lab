@@ -21,6 +21,9 @@ def first_task():
     is_even: bool = False
     is_odd: bool = True
 
+    print(f"Is even: {is_even}")
+    print(f"Is odd: {is_odd}")
+
 
 
 if __name__ == "__main__":
