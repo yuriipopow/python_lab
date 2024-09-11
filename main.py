@@ -1,19 +1,19 @@
 import math
-
+from typing import Optional
 
 def first_task(h: float, interval: list[float]):
     x: float = interval[0]
 
-    def first_math_function():
+    def first_math_function() -> Optional[float]:
         if x > 1:
             return math.log((math.log10(x) + math.log(x, 3)))
         else:
-            return "undefined"
+            return None
 
-    def second_math_function():
+    def second_math_function() -> float:
         return math.cos(math.sin(pow(x, 2)))
 
-    def third_math_function():
+    def third_math_function() -> float:
         return math.pow((pow(x, 3) + 0.5), 1 / 7)
 
     while interval[0] <= x <= interval[1]:
@@ -24,25 +24,41 @@ def first_task(h: float, interval: list[float]):
         else:
             print(f'x = {x} => {third_math_function()}')
         x += h
-        x = math.trunc(x * 100) / 100
+        x = round(x, 2)
 
-def second_task(h: float, interval: list[float], epsilon: float):
-    x: float = interval[0]
 
-    def math_function(n: int, x: float) -> float:
-        return pow(-1, n + 1) * pow(x, n) / n
+def second_task(h: float, interval: list[float], d: float):
+    x = interval[0]
 
-    while interval[0] <= x <= interval[1]:
+    def math_function(n_num: int, x_num: float) -> float:
+        return pow(-1, n_num) * (pow(x_num, n_num) / n_num)
+
+    while x <= interval[1]:
+        sum_value: float = 0
         n: int = 1
-        sum_of_expression: float = 0
         term: float = math_function(n, x)
-        while abs(term) >= epsilon:
-            sum_of_expression += term
+
+        while abs(term) >= d:
+            sum_value += term
             n += 1
             term = math_function(n, x)
-        print(f'x = {x} => {sum_of_expression}')
+
+        print(f"{x}, S(x) = {sum_value}")
         x += h
-        x = math.trunc(x * 100) / 100
+        x = round(x, 2)
+
+
+
+
+
+
+
+
+
+
+
+
 
 if __name__ == '__main__':
-    second_task(0.05, [0.1, 0.5], 0.001)
+    # first_task(0.1, [0.1, 0.5])
+    second_task(0.05, [0.1, 0.5], 0.0001000001)
