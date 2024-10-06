@@ -9,16 +9,19 @@ class Conference:
         self.date_timestamp: int = date_timestamp
         self.maintainer: str = maintainer
 
-
+    @property
     def get_name(self) -> str:
         return self.__name
 
+    @property
     def get_number_of_participants(self) -> int:
         return self.__number_of_participants
 
+    @property
     def get_price(self) -> int:
         return self.__price
 
+    @property
     def get_location(self) -> str:
         return self.__location
 
