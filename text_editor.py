@@ -12,4 +12,4 @@ class TextEditor:
             self.current_text = self.history.pop()
 
     def get_text(self):
-        return self.current_text
+        return " ".join([*self.history, self.current_text]).strip()
